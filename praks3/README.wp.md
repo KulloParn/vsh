@@ -65,3 +65,16 @@ wordpressi paigaldamine
 	cp -r wordpress /var/www/html
 	chown -R www-data:www-data /var/www/html
 	
+Praks6
+wordpress ühes masinas, database teises
+
+andmebaasis tuli teha kasutaja mis võtaks teisest serverist andmeid
+
+create user user@10.0.2.4 identified by 'parool';
+grant all privileges on wordpress.* to user@10.0.2.4;
+flush privileges;
+
+ühenduse saamisikes pidin muutma ära andmebaasi serveris bind = addressi
+	nano /etc/mysql/my.conf
+	bind = address 10.0.2.5
+ 
