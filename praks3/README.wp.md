@@ -46,3 +46,22 @@ nano /etc/apache2/apache2.conf
 	ServerName localhost
 
 
+Wordpress
+kõigepealt installisin mysql
+sudo apt-get install mysql-server
+sudo mysql_secure_installation
+
+tegin andmebaasi
+	mysql -u root -p
+	create database wordpress;
+	create user 'user'@'localhost' identified by 'parool';
+	grant all on wordpress.* to 'user' identified by 'parool';
+	exit;
+
+wordpressi paigaldamine
+	wget https://wordpress.org/latest.tar.gz
+	tar xpf latest.tar.gz
+	rm -rf /var/www/html
+	cp -r wordpress /var/www/html
+	chown -R www-data:www-data /var/www/html
+	
